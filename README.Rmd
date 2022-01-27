@@ -54,6 +54,18 @@ od_sf_short %>%
   qtm()
 ```
 
+Do the routing with OSRM:
+
+```{r, eval=FALSE}
+od_routes_osrm = route(l = od_sf_short, route_fun = route_osrm, osrm.profile = "car")
+sf::write_sf(od_routes_osrm, "od_routes_osrm.geojson")
+```
+
+```{r}
+od_routes_osrm = sf::read_sf("od_routes_osrm.geojson")
+qtm(od_routes_osrm)
+```
+
 
 ```{r, eval=FALSE}
 od_routes = route(l = od_sf_short, route_fun = route_google)

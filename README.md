@@ -64,6 +64,20 @@ od_sf_short %>%
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
+Do the routing with OSRM:
+
+``` r
+od_routes_osrm = route(l = od_sf_short, route_fun = route_osrm, osrm.profile = "car")
+sf::write_sf(od_routes_osrm, "od_routes_osrm.geojson")
+```
+
+``` r
+od_routes_osrm = sf::read_sf("od_routes_osrm.geojson")
+qtm(od_routes_osrm)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
 ``` r
 od_routes = route(l = od_sf_short, route_fun = route_google)
 sf::write_sf(od_routes, "od_routes.geojson")
@@ -74,4 +88,4 @@ od_routes = sf::read_sf("od_routes.geojson")
 qtm(od_routes)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
